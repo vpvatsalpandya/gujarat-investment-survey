@@ -5,257 +5,247 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Investment Preferences Survey – Gujarat</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.5; }
-    h1 { color: #1a365d; }
-    h2 { color: #2c5282; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
-    .section { margin-bottom: 32px; }
-    label { display: block; margin: 12px 0 4px; font-weight: 500; }
-    input[type="text"], select, textarea { width: 100%; padding: 8px; margin-bottom: 8px; border: 1px solid #cbd5e0; border-radius: 4px; }
-    .likert { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0; }
-    .likert label { font-weight: normal; display: flex; align-items: center; gap: 4px; }
-    button { background: #2b6cb0; color: white; padding: 12px 24px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
-    button:hover { background: #2c5282; }
-    .note { background: #ebf8ff; padding: 12px; border-radius: 6px; margin: 16px 0; }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%); margin: 0; padding: 20px; min-height: 100vh; }
+    .container { max-width: 720px; margin: 0 auto; background: white; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
+    .header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; padding: 28px 24px; text-align: center; }
+    .header h1 { margin: 0 0 8px; font-size: 1.5rem; }
+    .header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+    .progress-bar { height: 6px; background: #e2e8f0; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #10b981, #3b82f6); width: 0%; transition: width 0.4s ease; }
+    .step-indicator { text-align: center; padding: 12px; font-size: 0.85rem; color: #64748b; background: #f8fafc; }
+    .form-content { padding: 24px; }
+    .step { display: none; animation: fadeIn 0.4s ease; }
+    .step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    h2 { color: #1e3a8a; margin-top: 0; font-size: 1.3rem; }
+    .encouragement { background: #ecfdf5; border-left: 4px solid #10b981; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; color: #065f46; }
+    label { display: block; margin: 16px 0 6px; font-weight: 500; color: #1e293b; }
+    select, input[type="text"], textarea { width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 1rem; }
+    select:focus, input:focus, textarea:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+    .likert { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 16px; }
+    .likert label { font-weight: normal; display: flex; align-items: center; gap: 6px; background: #f1f5f9; padding: 8px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .likert label:hover { background: #e2e8f0; }
+    .likert input:checked + span, .likert label:has(input:checked) { background: #3b82f6; color: white; }
+    .checkbox-group label { display: flex; align-items: center; gap: 8px; font-weight: normal; margin: 8px 0; }
+    .buttons { display: flex; justify-content: space-between; margin-top: 28px; gap: 12px; }
+    button { padding: 12px 24px; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; font-weight: 500; transition: all 0.2s; }
+    .btn-next, .btn-submit { background: #3b82f6; color: white; }
+    .btn-next:hover, .btn-submit:hover { background: #2563eb; transform: translateY(-1px); }
+    .btn-prev { background: #e2e8f0; color: #475569; }
+    .btn-prev:hover { background: #cbd5e1; }
+    .note { font-size: 0.85rem; color: #64748b; margin-top: 16px; }
   </style>
 </head>
 <body>
-  <h1>Investment Preferences of Salaried Professionals in Gujarat</h1>
-  <p>This survey is for academic research (PhD). Your responses are confidential and used only for research purposes. It takes about 12–15 minutes.</p>
-
-  <form name="investment-survey" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
-    <input type="hidden" name="form-name" value="investment-survey">
-    <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
-
-    <div class="section">
-      <h2>1. Demographic Profile</h2>
-      <label>Age Group</label>
-      <select name="age" required>
-        <option value="">Select</option>
-        <option>18–24 years</option>
-        <option>25–34 years</option>
-        <option>35–44 years</option>
-        <option>45–54 years</option>
-        <option>55 years and above</option>
-      </select>
-
-      <label>Gender</label>
-      <select name="gender" required>
-        <option value="">Select</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Prefer not to say</option>
-      </select>
-
-      <label>Highest Education</label>
-      <select name="education" required>
-        <option value="">Select</option>
-        <option>High School / 12th Pass</option>
-        <option>Bachelor's Degree</option>
-        <option>Master's Degree</option>
-        <option>Professional Degree (CA, CS, CFA, etc.)</option>
-        <option>Doctorate (PhD)</option>
-      </select>
-
-      <label>Marital Status</label>
-      <select name="marital_status" required>
-        <option value="">Select</option>
-        <option>Single</option>
-        <option>Married</option>
-        <option>Widowed</option>
-        <option>Divorced / Separated</option>
-        <option>Living Together</option>
-      </select>
-
-      <label>Monthly Household Income</label>
-      <select name="monthly_income" required>
-        <option value="">Select</option>
-        <option>Less than ₹25,000</option>
-        <option>₹25,001 – ₹50,000</option>
-        <option>₹50,001 – ₹75,000</option>
-        <option>₹75,001 – ₹1,00,000</option>
-        <option>More than ₹1,00,000</option>
-      </select>
-
-      <label>Occupation Sector</label>
-      <select name="occupation" required>
-        <option value="">Select</option>
-        <option>Government / Public Sector</option>
-        <option>Private Sector</option>
-        <option>Banking / Financial Services</option>
-        <option>Education / Academic</option>
-        <option>Healthcare</option>
-        <option>IT / Technology</option>
-        <option>Other</option>
-      </select>
-
-      <label>Years of Work Experience</label>
-      <select name="work_experience" required>
-        <option value="">Select</option>
-        <option>Less than 2 years</option>
-        <option>2–5 years</option>
-        <option>5–10 years</option>
-        <option>10–20 years</option>
-        <option>More than 20 years</option>
-      </select>
-
-      <label>District of Residence</label>
-      <select name="district" required>
-        <option value="">Select</option>
-        <option>Ahmedabad</option>
-        <option>Surat</option>
-        <option>Vadodara</option>
-        <option>Rajkot</option>
-        <option>Bhavnagar</option>
-      </select>
-
-      <label>Number of Dependents</label>
-      <select name="dependents" required>
-        <option value="">Select</option>
-        <option>None</option>
-        <option>1–2</option>
-        <option>3–4</option>
-        <option>5 or more</option>
-      </select>
-
-      <label>Do you own a home?</label>
-      <select name="home_ownership" required>
-        <option value="">Select</option>
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+  <div class="container">
+    <div class="header">
+      <h1>Your Investment Preferences</h1>
+      <p>Help shape research on how salaried professionals in Gujarat invest. Takes ~12 minutes.</p>
     </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+    <div class="step-indicator" id="stepLabel">Step 1 of 8</div>
 
-    <div class="section">
-      <h2>2. Investment Awareness (Familiarity 1 = Not at all → 5 = Extremely familiar)</h2>
-      <p>Rate your familiarity with each option:</p>
-      <!-- Simplified for brevity; expand as needed -->
-      <label>Equity Shares (Stocks)</label>
-      <div class="likert">
-        <label><input type="radio" name="fam_equity" value="1" required> 1</label>
-        <label><input type="radio" name="fam_equity" value="2"> 2</label>
-        <label><input type="radio" name="fam_equity" value="3"> 3</label>
-        <label><input type="radio" name="fam_equity" value="4"> 4</label>
-        <label><input type="radio" name="fam_equity" value="5"> 5</label>
+    <form name="investment-survey" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" class="form-content">
+      <input type="hidden" name="form-name" value="investment-survey">
+      <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+      <!-- Step 1: Demographics -->
+      <div class="step active" data-step="1">
+        <div class="encouragement">Great start! Your honest answers help improve financial products for professionals like you.</div>
+        <h2>About You</h2>
+        <label>Age Group</label>
+        <select name="age" required><option value="">Select</option><option>18–24 years</option><option>25–34 years</option><option>35–44 years</option><option>45–54 years</option><option>55 years and above</option></select>
+        <label>Gender</label>
+        <select name="gender" required><option value="">Select</option><option>Male</option><option>Female</option><option>Prefer not to say</option></select>
+        <label>Highest Education</label>
+        <select name="education" required><option value="">Select</option><option>High School / 12th Pass</option><option>Bachelor's Degree</option><option>Master's Degree</option><option>Professional Degree (CA, CS, CFA, etc.)</option><option>Doctorate (PhD)</option></select>
+        <label>Marital Status</label>
+        <select name="marital_status" required><option value="">Select</option><option>Single</option><option>Married</option><option>Widowed</option><option>Divorced / Separated</option><option>Living Together</option></select>
+        <label>Monthly Household Income</label>
+        <select name="monthly_income" required><option value="">Select</option><option>Less than ₹25,000</option><option>₹25,001 – ₹50,000</option><option>₹50,001 – ₹75,000</option><option>₹75,001 – ₹1,00,000</option><option>More than ₹1,00,000</option></select>
+        <label>Occupation Sector</label>
+        <select name="occupation" required><option value="">Select</option><option>Government / Public Sector</option><option>Private Sector</option><option>Banking / Financial Services</option><option>Education / Academic</option><option>Healthcare</option><option>IT / Technology</option><option>Other</option></select>
+        <label>Years of Work Experience</label>
+        <select name="work_experience" required><option value="">Select</option><option>Less than 2 years</option><option>2–5 years</option><option>5–10 years</option><option>10–20 years</option><option>More than 20 years</option></select>
+        <label>District</label>
+        <select name="district" required><option value="">Select</option><option>Ahmedabad</option><option>Surat</option><option>Vadodara</option><option>Rajkot</option><option>Bhavnagar</option></select>
+        <label>Number of Dependents</label>
+        <select name="dependents" required><option value="">Select</option><option>None</option><option>1–2</option><option>3–4</option><option>5 or more</option></select>
+        <label>Own a home?</label>
+        <select name="home_ownership" required><option value="">Select</option><option>Yes</option><option>No</option></select>
       </div>
 
-      <label>Mutual Funds</label>
-      <div class="likert">
-        <label><input type="radio" name="fam_mf" value="1" required> 1</label>
-        <label><input type="radio" name="fam_mf" value="2"> 2</label>
-        <label><input type="radio" name="fam_mf" value="3"> 3</label>
-        <label><input type="radio" name="fam_mf" value="4"> 4</label>
-        <label><input type="radio" name="fam_mf" value="5"> 5</label>
+      <!-- Step 2: Familiarity -->
+      <div class="step" data-step="2">
+        <div class="encouragement">You're doing great. Just a few more quick ratings.</div>
+        <h2>How familiar are you with these?</h2>
+        <p style="color:#64748b;font-size:0.9rem">1 = Not at all familiar → 5 = Extremely familiar</p>
+        <label>Equity Shares (Stocks)</label>
+        <div class="likert"><label><input type="radio" name="fam_equity" value="1" required><span>1</span></label><label><input type="radio" name="fam_equity" value="2"><span>2</span></label><label><input type="radio" name="fam_equity" value="3"><span>3</span></label><label><input type="radio" name="fam_equity" value="4"><span>4</span></label><label><input type="radio" name="fam_equity" value="5"><span>5</span></label></div>
+        <label>Mutual Funds</label>
+        <div class="likert"><label><input type="radio" name="fam_mf" value="1" required><span>1</span></label><label><input type="radio" name="fam_mf" value="2"><span>2</span></label><label><input type="radio" name="fam_mf" value="3"><span>3</span></label><label><input type="radio" name="fam_mf" value="4"><span>4</span></label><label><input type="radio" name="fam_mf" value="5"><span>5</span></label></div>
+        <label>Fixed Deposits</label>
+        <div class="likert"><label><input type="radio" name="fam_fd" value="1" required><span>1</span></label><label><input type="radio" name="fam_fd" value="2"><span>2</span></label><label><input type="radio" name="fam_fd" value="3"><span>3</span></label><label><input type="radio" name="fam_fd" value="4"><span>4</span></label><label><input type="radio" name="fam_fd" value="5"><span>5</span></label></div>
+        <label>Gold / Silver</label>
+        <div class="likert"><label><input type="radio" name="fam_gold" value="1" required><span>1</span></label><label><input type="radio" name="fam_gold" value="2"><span>2</span></label><label><input type="radio" name="fam_gold" value="3"><span>3</span></label><label><input type="radio" name="fam_gold" value="4"><span>4</span></label><label><input type="radio" name="fam_gold" value="5"><span>5</span></label></div>
+        <label>Real Estate</label>
+        <div class="likert"><label><input type="radio" name="fam_re" value="1" required><span>1</span></label><label><input type="radio" name="fam_re" value="2"><span>2</span></label><label><input type="radio" name="fam_re" value="3"><span>3</span></label><label><input type="radio" name="fam_re" value="4"><span>4</span></label><label><input type="radio" name="fam_re" value="5"><span>5</span></label></div>
+        <label>Bitcoin / Cryptocurrency</label>
+        <div class="likert"><label><input type="radio" name="fam_btc" value="1" required><span>1</span></label><label><input type="radio" name="fam_btc" value="2"><span>2</span></label><label><input type="radio" name="fam_btc" value="3"><span>3</span></label><label><input type="radio" name="fam_btc" value="4"><span>4</span></label><label><input type="radio" name="fam_btc" value="5"><span>5</span></label></div>
+        <label>NFTs</label>
+        <div class="likert"><label><input type="radio" name="fam_nft" value="1" required><span>1</span></label><label><input type="radio" name="fam_nft" value="2"><span>2</span></label><label><input type="radio" name="fam_nft" value="3"><span>3</span></label><label><input type="radio" name="fam_nft" value="4"><span>4</span></label><label><input type="radio" name="fam_nft" value="5"><span>5</span></label></div>
       </div>
 
-      <label>Fixed Deposits</label>
-      <div class="likert">
-        <label><input type="radio" name="fam_fd" value="1" required> 1</label>
-        <label><input type="radio" name="fam_fd" value="2"> 2</label>
-        <label><input type="radio" name="fam_fd" value="3"> 3</label>
-        <label><input type="radio" name="fam_fd" value="4"> 4</label>
-        <label><input type="radio" name="fam_fd" value="5"> 5</label>
+      <!-- Step 3: Media -->
+      <div class="step" data-step="3">
+        <div class="encouragement">Halfway there. Your insights matter.</div>
+        <h2>Where do you get investment information?</h2>
+        <p style="color:#64748b;font-size:0.9rem">1 = Never → 5 = Daily</p>
+        <label>Financial news websites</label>
+        <div class="likert"><label><input type="radio" name="media_news" value="1" required><span>1</span></label><label><input type="radio" name="media_news" value="2"><span>2</span></label><label><input type="radio" name="media_news" value="3"><span>3</span></label><label><input type="radio" name="media_news" value="4"><span>4</span></label><label><input type="radio" name="media_news" value="5"><span>5</span></label></div>
+        <label>Social media (YouTube, Instagram, X, etc.)</label>
+        <div class="likert"><label><input type="radio" name="media_social" value="1" required><span>1</span></label><label><input type="radio" name="media_social" value="2"><span>2</span></label><label><input type="radio" name="media_social" value="3"><span>3</span></label><label><input type="radio" name="media_social" value="4"><span>4</span></label><label><input type="radio" name="media_social" value="5"><span>5</span></label></div>
+        <label>Mobile investment apps (Groww, Zerodha, etc.)</label>
+        <div class="likert"><label><input type="radio" name="media_apps" value="1" required><span>1</span></label><label><input type="radio" name="media_apps" value="2"><span>2</span></label><label><input type="radio" name="media_apps" value="3"><span>3</span></label><label><input type="radio" name="media_apps" value="4"><span>4</span></label><label><input type="radio" name="media_apps" value="5"><span>5</span></label></div>
+        <label>Friends / Family / Colleagues</label>
+        <div class="likert"><label><input type="radio" name="media_friends" value="1" required><span>1</span></label><label><input type="radio" name="media_friends" value="2"><span>2</span></label><label><input type="radio" name="media_friends" value="3"><span>3</span></label><label><input type="radio" name="media_friends" value="4"><span>4</span></label><label><input type="radio" name="media_friends" value="5"><span>5</span></label></div>
       </div>
 
-      <label>Gold / Silver</label>
-      <div class="likert">
-        <label><input type="radio" name="fam_gold" value="1" required> 1</label>
-        <label><input type="radio" name="fam_gold" value="2"> 2</label>
-        <label><input type="radio" name="fam_gold" value="3"> 3</label>
-        <label><input type="radio" name="fam_gold" value="4"> 4</label>
-        <label><input type="radio" name="fam_gold" value="5"> 5</label>
+      <!-- Step 4: Goals & Current -->
+      <div class="step" data-step="4">
+        <div class="encouragement">Excellent progress. Almost at the interesting part.</div>
+        <h2>Your Investment Goals & Current Holdings</h2>
+        <label>Primary investment goal</label>
+        <select name="investment_goal" required><option value="">Select</option><option>Short-term gains (<1 year)</option><option>Medium-term growth (1–5 years)</option><option>Long-term wealth creation (5+ years)</option><option>Retirement planning</option><option>Child's education / Marriage</option><option>Emergency fund</option></select>
+        <label>% of monthly income typically invested</label>
+        <select name="investment_percentage" required><option value="">Select</option><option>Less than 10%</option><option>10% – 20%</option><option>21% – 30%</option><option>31% – 40%</option><option>More than 40%</option></select>
+        <label>How long have you been investing?</label>
+        <select name="investment_duration" required><option value="">Select</option><option>Less than 1 year</option><option>1–3 years</option><option>3–5 years</option><option>5–10 years</option><option>More than 10 years</option></select>
+        <label>Currently invest in (select all that apply)</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="current[]" value="Equity Shares"> Equity Shares</label>
+          <label><input type="checkbox" name="current[]" value="Mutual Funds"> Mutual Funds</label>
+          <label><input type="checkbox" name="current[]" value="Fixed Deposits"> Fixed Deposits</label>
+          <label><input type="checkbox" name="current[]" value="Gold / Silver"> Gold / Silver</label>
+          <label><input type="checkbox" name="current[]" value="Real Estate"> Real Estate</label>
+          <label><input type="checkbox" name="current[]" value="PPF / NPS"> PPF / NPS</label>
+          <label><input type="checkbox" name="current[]" value="Bitcoin / Crypto"> Bitcoin / Crypto</label>
+        </div>
       </div>
 
-      <label>Bitcoin / Cryptocurrency</label>
-      <div class="likert">
-        <label><input type="radio" name="fam_btc" value="1" required> 1</label>
-        <label><input type="radio" name="fam_btc" value="2"> 2</label>
-        <label><input type="radio" name="fam_btc" value="3"> 3</label>
-        <label><input type="radio" name="fam_btc" value="4"> 4</label>
-        <label><input type="radio" name="fam_btc" value="5"> 5</label>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>3. Primary Investment Goal</h2>
-      <select name="investment_goal" required>
-        <option value="">Select</option>
-        <option>Short-term gains (less than 1 year)</option>
-        <option>Medium-term growth (1–5 years)</option>
-        <option>Long-term wealth creation (5+ years)</option>
-        <option>Retirement planning</option>
-        <option>Child's education / Marriage</option>
-        <option>Emergency fund</option>
-      </select>
-    </div>
-
-    <div class="section">
-      <h2>4. Investment Preference (1 = Very Unlikely → 5 = Very Likely)</h2>
-      <label>Fixed Deposits</label>
-      <div class="likert">
-        <label><input type="radio" name="pref_fd" value="1" required> 1</label>
-        <label><input type="radio" name="pref_fd" value="2"> 2</label>
-        <label><input type="radio" name="pref_fd" value="3"> 3</label>
-        <label><input type="radio" name="pref_fd" value="4"> 4</label>
-        <label><input type="radio" name="pref_fd" value="5"> 5</label>
+      <!-- Step 5: Risk Tolerance -->
+      <div class="step" data-step="5">
+        <div class="encouragement">Your risk style is unique. There are no right or wrong answers.</div>
+        <h2>Risk Tolerance</h2>
+        <p style="color:#64748b;font-size:0.9rem">1 = Strongly Disagree → 5 = Strongly Agree</p>
+        <label>I am willing to take substantial financial risk to earn higher returns.</label>
+        <div class="likert"><label><input type="radio" name="rt1" value="1" required><span>1</span></label><label><input type="radio" name="rt1" value="2"><span>2</span></label><label><input type="radio" name="rt1" value="3"><span>3</span></label><label><input type="radio" name="rt1" value="4"><span>4</span></label><label><input type="radio" name="rt1" value="5"><span>5</span></label></div>
+        <label>I prefer investments with guaranteed returns, even if lower.</label>
+        <div class="likert"><label><input type="radio" name="rt2" value="1" required><span>1</span></label><label><input type="radio" name="rt2" value="2"><span>2</span></label><label><input type="radio" name="rt2" value="3"><span>3</span></label><label><input type="radio" name="rt2" value="4"><span>4</span></label><label><input type="radio" name="rt2" value="5"><span>5</span></label></div>
+        <label>I feel comfortable investing in volatile markets (stocks, crypto).</label>
+        <div class="likert"><label><input type="radio" name="rt3" value="1" required><span>1</span></label><label><input type="radio" name="rt3" value="2"><span>2</span></label><label><input type="radio" name="rt3" value="3"><span>3</span></label><label><input type="radio" name="rt3" value="4"><span>4</span></label><label><input type="radio" name="rt3" value="5"><span>5</span></label></div>
+        <label>I would rather keep money in safe FDs than stocks.</label>
+        <div class="likert"><label><input type="radio" name="rt4" value="1" required><span>1</span></label><label><input type="radio" name="rt4" value="2"><span>2</span></label><label><input type="radio" name="rt4" value="3"><span>3</span></label><label><input type="radio" name="rt4" value="4"><span>4</span></label><label><input type="radio" name="rt4" value="5"><span>5</span></label></div>
+        <label>I get anxious when the value of my investments drops significantly.</label>
+        <div class="likert"><label><input type="radio" name="rt7" value="1" required><span>1</span></label><label><input type="radio" name="rt7" value="2"><span>2</span></label><label><input type="radio" name="rt7" value="3"><span>3</span></label><label><input type="radio" name="rt7" value="4"><span>4</span></label><label><input type="radio" name="rt7" value="5"><span>5</span></label></div>
       </div>
 
-      <label>Gold / Silver</label>
-      <div class="likert">
-        <label><input type="radio" name="pref_gold" value="1" required> 1</label>
-        <label><input type="radio" name="pref_gold" value="2"> 2</label>
-        <label><input type="radio" name="pref_gold" value="3"> 3</label>
-        <label><input type="radio" name="pref_gold" value="4"> 4</label>
-        <label><input type="radio" name="pref_gold" value="5"> 5</label>
+      <!-- Step 6: Preference -->
+      <div class="step" data-step="6">
+        <div class="encouragement">Almost done! Your preferences are valuable for this research.</div>
+        <h2>How likely are you to invest in these?</h2>
+        <p style="color:#64748b;font-size:0.9rem">1 = Very Unlikely → 5 = Very Likely</p>
+        <label>Fixed Deposits</label>
+        <div class="likert"><label><input type="radio" name="pref_fd" value="1" required><span>1</span></label><label><input type="radio" name="pref_fd" value="2"><span>2</span></label><label><input type="radio" name="pref_fd" value="3"><span>3</span></label><label><input type="radio" name="pref_fd" value="4"><span>4</span></label><label><input type="radio" name="pref_fd" value="5"><span>5</span></label></div>
+        <label>Gold / Silver</label>
+        <div class="likert"><label><input type="radio" name="pref_gold" value="1" required><span>1</span></label><label><input type="radio" name="pref_gold" value="2"><span>2</span></label><label><input type="radio" name="pref_gold" value="3"><span>3</span></label><label><input type="radio" name="pref_gold" value="4"><span>4</span></label><label><input type="radio" name="pref_gold" value="5"><span>5</span></label></div>
+        <label>Mutual Funds</label>
+        <div class="likert"><label><input type="radio" name="pref_mf" value="1" required><span>1</span></label><label><input type="radio" name="pref_mf" value="2"><span>2</span></label><label><input type="radio" name="pref_mf" value="3"><span>3</span></label><label><input type="radio" name="pref_mf" value="4"><span>4</span></label><label><input type="radio" name="pref_mf" value="5"><span>5</span></label></div>
+        <label>Equity Shares</label>
+        <div class="likert"><label><input type="radio" name="pref_equity" value="1" required><span>1</span></label><label><input type="radio" name="pref_equity" value="2"><span>2</span></label><label><input type="radio" name="pref_equity" value="3"><span>3</span></label><label><input type="radio" name="pref_equity" value="4"><span>4</span></label><label><input type="radio" name="pref_equity" value="5"><span>5</span></label></div>
+        <label>Real Estate</label>
+        <div class="likert"><label><input type="radio" name="pref_re" value="1" required><span>1</span></label><label><input type="radio" name="pref_re" value="2"><span>2</span></label><label><input type="radio" name="pref_re" value="3"><span>3</span></label><label><input type="radio" name="pref_re" value="4"><span>4</span></label><label><input type="radio" name="pref_re" value="5"><span>5</span></label></div>
+        <label>Bitcoin / Cryptocurrency</label>
+        <div class="likert"><label><input type="radio" name="pref_btc" value="1" required><span>1</span></label><label><input type="radio" name="pref_btc" value="2"><span>2</span></label><label><input type="radio" name="pref_btc" value="3"><span>3</span></label><label><input type="radio" name="pref_btc" value="4"><span>4</span></label><label><input type="radio" name="pref_btc" value="5"><span>5</span></label></div>
+        <label>NFTs</label>
+        <div class="likert"><label><input type="radio" name="pref_nft" value="1" required><span>1</span></label><label><input type="radio" name="pref_nft" value="2"><span>2</span></label><label><input type="radio" name="pref_nft" value="3"><span>3</span></label><label><input type="radio" name="pref_nft" value="4"><span>4</span></label><label><input type="radio" name="pref_nft" value="5"><span>5</span></label></div>
       </div>
 
-      <label>Mutual Funds</label>
-      <div class="likert">
-        <label><input type="radio" name="pref_mf" value="1" required> 1</label>
-        <label><input type="radio" name="pref_mf" value="2"> 2</label>
-        <label><input type="radio" name="pref_mf" value="3"> 3</label>
-        <label><input type="radio" name="pref_mf" value="4"> 4</label>
-        <label><input type="radio" name="pref_mf" value="5"> 5</label>
+      <!-- Step 7: Literacy (sample) -->
+      <div class="step" data-step="7">
+        <div class="encouragement">Quick knowledge check — no pressure, just your best guess.</div>
+        <h2>Financial Knowledge</h2>
+        <label>What does "inflation" refer to?</label>
+        <select name="fl2" required><option value="">Select</option><option>A decrease in the general price level</option><option>An increase in the general price level</option><option>The total amount of money in circulation</option><option>The interest rate charged by banks</option></select>
+        <label>What is the main advantage of investing in a mutual fund?</label>
+        <select name="fl4" required><option value="">Select</option><option>Guaranteed high returns</option><option>Professional portfolio management</option><option>No risk of losing money</option><option>Complete control over individual investments</option></select>
+        <label>If interest rate on savings is lower than inflation, your purchasing power will:</label>
+        <select name="fl10" required><option value="">Select</option><option>Increase over time</option><option>Stay the same</option><option>Decrease over time</option><option>Double over time</option></select>
       </div>
 
-      <label>Equity Shares</label>
-      <div class="likert">
-        <label><input type="radio" name="pref_equity" value="1" required> 1</label>
-        <label><input type="radio" name="pref_equity" value="2"> 2</label>
-        <label><input type="radio" name="pref_equity" value="3"> 3</label>
-        <label><input type="radio" name="pref_equity" value="4"> 4</label>
-        <label><input type="radio" name="pref_equity" value="5"> 5</label>
+      <!-- Step 8: Final -->
+      <div class="step" data-step="8">
+        <div class="encouragement">Last step! Thank you for contributing to this research.</div>
+        <h2>Final Thoughts</h2>
+        <label>Please select "Agree" to confirm you are paying attention.</label>
+        <div class="likert">
+          <label><input type="radio" name="attention" value="Disagree"><span>Disagree</span></label>
+          <label><input type="radio" name="attention" value="Neutral"><span>Neutral</span></label>
+          <label><input type="radio" name="attention" value="Agree" required><span>Agree</span></label>
+        </div>
+        <label>Any additional comments? (optional)</label>
+        <textarea name="comments" rows="4" placeholder="What influences your investment decisions the most?"></textarea>
+        <div class="note">By submitting, you confirm you are a salaried professional in Gujarat and consent to the use of your anonymised responses for academic research only.</div>
       </div>
 
-      <label>Bitcoin / Cryptocurrency</label>
-      <div class="likert">
-        <label><input type="radio" name="pref_btc" value="1" required> 1</label>
-        <label><input type="radio" name="pref_btc" value="2"> 2</label>
-        <label><input type="radio" name="pref_btc" value="3"> 3</label>
-        <label><input type="radio" name="pref_btc" value="4"> 4</label>
-        <label><input type="radio" name="pref_btc" value="5"> 5</label>
+      <div class="buttons">
+        <button type="button" class="btn-prev" id="prevBtn" style="visibility:hidden">Previous</button>
+        <button type="button" class="btn-next" id="nextBtn">Next</button>
+        <button type="submit" class="btn-submit" id="submitBtn" style="display:none">Submit Survey</button>
       </div>
-    </div>
+    </form>
+  </div>
 
-    <div class="section">
-      <h2>5. Attention Check</h2>
-      <label>Please select "Agree" for this item to confirm you are paying attention.</label>
-      <div class="likert">
-        <label><input type="radio" name="attention" value="Disagree"> Disagree</label>
-        <label><input type="radio" name="attention" value="Neutral"> Neutral</label>
-        <label><input type="radio" name="attention" value="Agree" required> Agree</label>
-      </div>
-    </div>
+  <script>
+    const steps = document.querySelectorAll('.step');
+    const progress = document.getElementById('progress');
+    const stepLabel = document.getElementById('stepLabel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    let current = 0;
 
-    <div class="section">
-      <label>Any additional comments (optional)</label>
-      <textarea name="comments" rows="4"></textarea>
-    </div>
+    function showStep(n) {
+      steps.forEach(s => s.classList.remove('active'));
+      steps[n].classList.add('active');
+      progress.style.width = ((n + 1) / steps.length * 100) + '%';
+      stepLabel.textContent = `Step ${n + 1} of ${steps.length}`;
+      prevBtn.style.visibility = n === 0 ? 'hidden' : 'visible';
+      nextBtn.style.display = n === steps.length - 1 ? 'none' : 'inline-block';
+      submitBtn.style.display = n === steps.length - 1 ? 'inline-block' : 'none';
+    }
 
-    <div class="note">
-      By submitting, you confirm that you are a salaried professional residing in Gujarat and consent to the use of your anonymised responses for academic research.
-    </div>
+    nextBtn.addEventListener('click', () => {
+      const active = steps[current];
+      const required = active.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(el => {
+        if (!el.value && el.type !== 'radio' && el.type !== 'checkbox') valid = false;
+        if (el.type === 'radio') {
+          const name = el.name;
+          if (!active.querySelector(`input[name="${name}"]:checked`)) valid = false;
+        }
+      });
+      if (!valid) { alert('Please answer all required questions on this page.'); return; }
+      if (current < steps.length - 1) { current++; showStep(current); }
+    });
 
-    <button type="submit">Submit Survey</button>
-  </form>
+    prevBtn.addEventListener('click', () => {
+      if (current > 0) { current--; showStep(current); }
+    });
+
+    showStep(0);
+  </script>
 </body>
 </html>
