@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment Preferences Survey – Gujarat</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; line-height: 1.5; }
+    h1 { color: #1a365d; }
+    h2 { color: #2c5282; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+    .section { margin-bottom: 32px; }
+    label { display: block; margin: 12px 0 4px; font-weight: 500; }
+    input[type="text"], select, textarea { width: 100%; padding: 8px; margin-bottom: 8px; border: 1px solid #cbd5e0; border-radius: 4px; }
+    .likert { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0; }
+    .likert label { font-weight: normal; display: flex; align-items: center; gap: 4px; }
+    button { background: #2b6cb0; color: white; padding: 12px 24px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; }
+    button:hover { background: #2c5282; }
+    .note { background: #ebf8ff; padding: 12px; border-radius: 6px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Investment Preferences of Salaried Professionals in Gujarat</h1>
+  <p>This survey is for academic research (PhD). Your responses are confidential and used only for research purposes. It takes about 12–15 minutes.</p>
+
+  <form name="investment-survey" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+    <input type="hidden" name="form-name" value="investment-survey">
+    <p style="display:none"><label>Don’t fill this out: <input name="bot-field"></label></p>
+
+    <div class="section">
+      <h2>1. Demographic Profile</h2>
+      <label>Age Group</label>
+      <select name="age" required>
+        <option value="">Select</option>
+        <option>18–24 years</option>
+        <option>25–34 years</option>
+        <option>35–44 years</option>
+        <option>45–54 years</option>
+        <option>55 years and above</option>
+      </select>
+
+      <label>Gender</label>
+      <select name="gender" required>
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Prefer not to say</option>
+      </select>
+
+      <label>Highest Education</label>
+      <select name="education" required>
+        <option value="">Select</option>
+        <option>High School / 12th Pass</option>
+        <option>Bachelor's Degree</option>
+        <option>Master's Degree</option>
+        <option>Professional Degree (CA, CS, CFA, etc.)</option>
+        <option>Doctorate (PhD)</option>
+      </select>
+
+      <label>Marital Status</label>
+      <select name="marital_status" required>
+        <option value="">Select</option>
+        <option>Single</option>
+        <option>Married</option>
+        <option>Widowed</option>
+        <option>Divorced / Separated</option>
+        <option>Living Together</option>
+      </select>
+
+      <label>Monthly Household Income</label>
+      <select name="monthly_income" required>
+        <option value="">Select</option>
+        <option>Less than ₹25,000</option>
+        <option>₹25,001 – ₹50,000</option>
+        <option>₹50,001 – ₹75,000</option>
+        <option>₹75,001 – ₹1,00,000</option>
+        <option>More than ₹1,00,000</option>
+      </select>
+
+      <label>Occupation Sector</label>
+      <select name="occupation" required>
+        <option value="">Select</option>
+        <option>Government / Public Sector</option>
+        <option>Private Sector</option>
+        <option>Banking / Financial Services</option>
+        <option>Education / Academic</option>
+        <option>Healthcare</option>
+        <option>IT / Technology</option>
+        <option>Other</option>
+      </select>
+
+      <label>Years of Work Experience</label>
+      <select name="work_experience" required>
+        <option value="">Select</option>
+        <option>Less than 2 years</option>
+        <option>2–5 years</option>
+        <option>5–10 years</option>
+        <option>10–20 years</option>
+        <option>More than 20 years</option>
+      </select>
+
+      <label>District of Residence</label>
+      <select name="district" required>
+        <option value="">Select</option>
+        <option>Ahmedabad</option>
+        <option>Surat</option>
+        <option>Vadodara</option>
+        <option>Rajkot</option>
+        <option>Bhavnagar</option>
+      </select>
+
+      <label>Number of Dependents</label>
+      <select name="dependents" required>
+        <option value="">Select</option>
+        <option>None</option>
+        <option>1–2</option>
+        <option>3–4</option>
+        <option>5 or more</option>
+      </select>
+
+      <label>Do you own a home?</label>
+      <select name="home_ownership" required>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <h2>2. Investment Awareness (Familiarity 1 = Not at all → 5 = Extremely familiar)</h2>
+      <p>Rate your familiarity with each option:</p>
+      <!-- Simplified for brevity; expand as needed -->
+      <label>Equity Shares (Stocks)</label>
+      <div class="likert">
+        <label><input type="radio" name="fam_equity" value="1" required> 1</label>
+        <label><input type="radio" name="fam_equity" value="2"> 2</label>
+        <label><input type="radio" name="fam_equity" value="3"> 3</label>
+        <label><input type="radio" name="fam_equity" value="4"> 4</label>
+        <label><input type="radio" name="fam_equity" value="5"> 5</label>
+      </div>
+
+      <label>Mutual Funds</label>
+      <div class="likert">
+        <label><input type="radio" name="fam_mf" value="1" required> 1</label>
+        <label><input type="radio" name="fam_mf" value="2"> 2</label>
+        <label><input type="radio" name="fam_mf" value="3"> 3</label>
+        <label><input type="radio" name="fam_mf" value="4"> 4</label>
+        <label><input type="radio" name="fam_mf" value="5"> 5</label>
+      </div>
+
+      <label>Fixed Deposits</label>
+      <div class="likert">
+        <label><input type="radio" name="fam_fd" value="1" required> 1</label>
+        <label><input type="radio" name="fam_fd" value="2"> 2</label>
+        <label><input type="radio" name="fam_fd" value="3"> 3</label>
+        <label><input type="radio" name="fam_fd" value="4"> 4</label>
+        <label><input type="radio" name="fam_fd" value="5"> 5</label>
+      </div>
+
+      <label>Gold / Silver</label>
+      <div class="likert">
+        <label><input type="radio" name="fam_gold" value="1" required> 1</label>
+        <label><input type="radio" name="fam_gold" value="2"> 2</label>
+        <label><input type="radio" name="fam_gold" value="3"> 3</label>
+        <label><input type="radio" name="fam_gold" value="4"> 4</label>
+        <label><input type="radio" name="fam_gold" value="5"> 5</label>
+      </div>
+
+      <label>Bitcoin / Cryptocurrency</label>
+      <div class="likert">
+        <label><input type="radio" name="fam_btc" value="1" required> 1</label>
+        <label><input type="radio" name="fam_btc" value="2"> 2</label>
+        <label><input type="radio" name="fam_btc" value="3"> 3</label>
+        <label><input type="radio" name="fam_btc" value="4"> 4</label>
+        <label><input type="radio" name="fam_btc" value="5"> 5</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>3. Primary Investment Goal</h2>
+      <select name="investment_goal" required>
+        <option value="">Select</option>
+        <option>Short-term gains (less than 1 year)</option>
+        <option>Medium-term growth (1–5 years)</option>
+        <option>Long-term wealth creation (5+ years)</option>
+        <option>Retirement planning</option>
+        <option>Child's education / Marriage</option>
+        <option>Emergency fund</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <h2>4. Investment Preference (1 = Very Unlikely → 5 = Very Likely)</h2>
+      <label>Fixed Deposits</label>
+      <div class="likert">
+        <label><input type="radio" name="pref_fd" value="1" required> 1</label>
+        <label><input type="radio" name="pref_fd" value="2"> 2</label>
+        <label><input type="radio" name="pref_fd" value="3"> 3</label>
+        <label><input type="radio" name="pref_fd" value="4"> 4</label>
+        <label><input type="radio" name="pref_fd" value="5"> 5</label>
+      </div>
+
+      <label>Gold / Silver</label>
+      <div class="likert">
+        <label><input type="radio" name="pref_gold" value="1" required> 1</label>
+        <label><input type="radio" name="pref_gold" value="2"> 2</label>
+        <label><input type="radio" name="pref_gold" value="3"> 3</label>
+        <label><input type="radio" name="pref_gold" value="4"> 4</label>
+        <label><input type="radio" name="pref_gold" value="5"> 5</label>
+      </div>
+
+      <label>Mutual Funds</label>
+      <div class="likert">
+        <label><input type="radio" name="pref_mf" value="1" required> 1</label>
+        <label><input type="radio" name="pref_mf" value="2"> 2</label>
+        <label><input type="radio" name="pref_mf" value="3"> 3</label>
+        <label><input type="radio" name="pref_mf" value="4"> 4</label>
+        <label><input type="radio" name="pref_mf" value="5"> 5</label>
+      </div>
+
+      <label>Equity Shares</label>
+      <div class="likert">
+        <label><input type="radio" name="pref_equity" value="1" required> 1</label>
+        <label><input type="radio" name="pref_equity" value="2"> 2</label>
+        <label><input type="radio" name="pref_equity" value="3"> 3</label>
+        <label><input type="radio" name="pref_equity" value="4"> 4</label>
+        <label><input type="radio" name="pref_equity" value="5"> 5</label>
+      </div>
+
+      <label>Bitcoin / Cryptocurrency</label>
+      <div class="likert">
+        <label><input type="radio" name="pref_btc" value="1" required> 1</label>
+        <label><input type="radio" name="pref_btc" value="2"> 2</label>
+        <label><input type="radio" name="pref_btc" value="3"> 3</label>
+        <label><input type="radio" name="pref_btc" value="4"> 4</label>
+        <label><input type="radio" name="pref_btc" value="5"> 5</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>5. Attention Check</h2>
+      <label>Please select "Agree" for this item to confirm you are paying attention.</label>
+      <div class="likert">
+        <label><input type="radio" name="attention" value="Disagree"> Disagree</label>
+        <label><input type="radio" name="attention" value="Neutral"> Neutral</label>
+        <label><input type="radio" name="attention" value="Agree" required> Agree</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <label>Any additional comments (optional)</label>
+      <textarea name="comments" rows="4"></textarea>
+    </div>
+
+    <div class="note">
+      By submitting, you confirm that you are a salaried professional residing in Gujarat and consent to the use of your anonymised responses for academic research.
+    </div>
+
+    <button type="submit">Submit Survey</button>
+  </form>
+</body>
+</html>
